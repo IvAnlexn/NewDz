@@ -52,30 +52,107 @@
 # ноутбук
 #     12
 
-point1 = ['А', 'В', 'Е', 'И', 'Н', 'О', 'Р', 'С', 'Т']
-point2 = ['Д', 'К', 'Л', 'М', 'П', 'У']
-point3 = ['Б', 'Г', 'Ё', 'Ь', 'Я']
-point4 = ['Й', 'Ы']
-point5 = ['Ж', 'З', 'Х', 'Ц', 'Ч']
-point8 = ['Ш', 'Э', 'Ю']
-point10 = ['Ф', 'Щ', 'Ъ']
+# point1 = ['А', 'В', 'Е', 'И', 'Н', 'О', 'Р', 'С', 'Т']
+# point2 = ['Д', 'К', 'Л', 'М', 'П', 'У']
+# point3 = ['Б', 'Г', 'Ё', 'Ь', 'Я']
+# point4 = ['Й', 'Ы']
+# point5 = ['Ж', 'З', 'Х', 'Ц', 'Ч']
+# point8 = ['Ш', 'Э', 'Ю']
+# point10 = ['Ф', 'Щ', 'Ъ']
 
-print('Введите слово кириллицей...')
-word = input().upper()
-count = 0
-for symbol in word:
-    if symbol in point1:
-        count += 1
-    elif symbol in point2:
-        count += 2
-    elif symbol in point3:
-        count += 3
-    elif symbol in point4:
-        count += 4
-    elif symbol in point5:
-        count += 5
-    elif symbol in point8:
-        count += 8
+# print('Введите слово кириллицей...')
+# word = input().upper()
+# count = 0
+# for symbol in word:
+#     if symbol in point1:
+#         count += 1
+#     elif symbol in point2:
+#         count += 2
+#     elif symbol in point3:
+#         count += 3
+#     elif symbol in point4:
+#         count += 4
+#     elif symbol in point5:
+#         count += 5
+#     elif symbol in point8:
+#         count += 8
+#     else:
+#         count += 10
+# print(count)
+
+
+# # Считываем первый список
+# list1 = list(map(int, input("Введите первый список чисел через пробел: ").split()))
+
+# # Считываем второй список
+# list2 = list(map(int, input("Введите второй список чисел через пробел: ").split()))
+
+# # Используем множества для нахождения пересечения элементов двух списков
+# common_nums = set(list1) & set(list2)
+
+# # Сортируем результат в порядке возрастания и выводим на экран
+# result = sorted(list(common_nums))
+# print("Числа, которые встречаются в обоих наборах:", result)
+
+
+# # Считываем количество кустов и урожайность каждого куста
+# n = int(input())
+# berries = list(map(int, input().split()))
+
+# # Инициализируем максимальное количество собранных ягод нулём
+# max_berries = 0
+
+# # Перебираем все кусты на грядке
+# for i in range(n):
+#     # Вычисляем количество ягод, которые можно собрать с текущего куста и его двух соседних кустов
+#     current_berries = berries[i] + berries[(i+1)%n] + berries[(i-1)%n]
+#     # Если это количество ягод больше максимального, то сохраняем его
+#     if current_berries > max_berries:
+#         max_berries = current_berries
+
+# # Выводим на экран максимальное количество собранных ягод
+# print(max_berries)
+
+
+# Задача 26:  Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
+
+# *Пример:*
+
+# A = 3; B = 5 -> 243 (3⁵)
+#     A = 2; B = 3 -> 8 
+
+def power(a, b):
+    if b == 0:
+        return 1
+    elif b == 1:
+        return a
     else:
-        count += 10
-print(count)
+        return a * power(a, b - 1)
+
+a = int(input("Введите число a: "))
+b = int(input("Введите степень b: "))
+
+result = power(a, b)
+print(f"{a} в степени {b} равно {result}")
+
+# Задача 28: Напишите рекурсивную функцию sum(a, b), возвращающую сумму двух целых неотрицательных чисел. Из всех арифметических операций допускаются только +1 и -1. Также нельзя использовать циклы.
+# return sum(a,b-1) + 1 - Так делать нельзя
+
+# *Пример:*
+
+# 2 2
+#     4 
+
+def sum(a, b):
+    if b == 0:
+        return a
+    elif b > 0:
+        return sum(a+1, b-1)
+    else:
+        return sum(a-1, b+1)
+
+a = int(input("Введите первое число: "))
+b = int(input("Введите второе число: "))
+
+result = sum(a, b)
+print(f"Сумма чисел {a} и {b} равна {result}")
